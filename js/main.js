@@ -2,33 +2,6 @@ const scrollButton = document.querySelector("[data-scroll-to-blogs]");
 const blogsSection = document.querySelector("#latest-stories");
 const readMoreButtons = document.querySelectorAll("[data-read-more]");
 const revealItems = document.querySelectorAll(".reveal");
-const themeToggle = document.querySelector("[data-theme-toggle]");
-const themeLabel = document.querySelector("[data-theme-label]");
-const themeIcon = document.querySelector(".theme-toggle__icon");
-
-const updateThemeToggle = () => {
-  if (!themeToggle || !themeLabel || !themeIcon) return;
-
-  const isDark = document.documentElement.dataset.theme === "dark";
-  themeToggle.setAttribute("aria-pressed", String(isDark));
-  themeToggle.setAttribute(
-    "aria-label",
-    isDark ? "Switch to light mode" : "Switch to dark mode",
-  );
-  themeLabel.textContent = isDark ? "Light mode" : "Dark mode";
-  themeIcon.textContent = isDark ? "☀" : "☾";
-};
-
-updateThemeToggle();
-
-themeToggle?.addEventListener("click", () => {
-  const nextTheme =
-    document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-
-  document.documentElement.dataset.theme = nextTheme;
-  localStorage.setItem("fieldnotes-theme", nextTheme);
-  updateThemeToggle();
-});
 
 scrollButton?.addEventListener("click", () => {
   blogsSection?.scrollIntoView({ behavior: "smooth", block: "start" });
