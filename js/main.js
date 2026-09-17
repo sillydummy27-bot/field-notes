@@ -5,6 +5,7 @@ const revealItems = document.querySelectorAll(".reveal");
 const themeToggle = document.querySelector("[data-theme-toggle]");
 const themeLabel = document.querySelector("[data-theme-label]");
 const themeIcon = document.querySelector(".theme-toggle__icon");
+const signupForm = document.querySelector("[data-signup-form]");
 
 const updateThemeToggle = () => {
   if (!themeToggle || !themeLabel || !themeIcon) return;
@@ -28,6 +29,27 @@ themeToggle?.addEventListener("click", () => {
   document.documentElement.dataset.theme = nextTheme;
   localStorage.setItem("fieldnotes-theme", nextTheme);
   updateThemeToggle();
+});
+
+signupForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const emailInput = signupForm.elements.email;
+  const message = document.querySelector("#signup-message");
+  const isValid = emailInput.validity.valid;
+
+  emailInput.setAttribute("aria-invalid", String(!isValid));
+  message?.classList.toggle("is-error", !isValid);
+  message?.classList.toggle("is-success", isValid);
+
+  if (!isValid) {
+    if (message) message.textContent = "Enter a valid email address to join.";
+    emailInput.focus();
+    return;
+  }
+
+  if (message) message.textContent = "You’re on the list. Check your inbox soon.";
+  signupForm.reset();
 });
 
 scrollButton?.addEventListener("click", () => {

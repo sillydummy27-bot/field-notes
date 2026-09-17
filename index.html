@@ -145,6 +145,37 @@
           </figcaption>
         </figure>
       </section>
+
+      <section class="signup reveal" aria-labelledby="signup-title">
+        <div class="signup__copy">
+          <p class="eyebrow">One useful note</p>
+          <h2 id="signup-title">Make space for better work.</h2>
+          <p>
+            Get one thoughtful essay in your inbox every other Thursday. No
+            noise, and no endless promotions.
+          </p>
+        </div>
+
+        <form class="signup__form" data-signup-form novalidate>
+          <label for="signup-email">Email address</label>
+          <div class="signup__controls">
+            <input
+              id="signup-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              inputmode="email"
+              placeholder="you@example.com"
+              required
+              aria-describedby="signup-message"
+            />
+            <button type="submit">Join the list</button>
+          </div>
+          <p class="signup__message" id="signup-message" aria-live="polite">
+            You can unsubscribe anytime.
+          </p>
+        </form>
+      </section>
     </main>
 
     <script src="js/main.js" defer></script>

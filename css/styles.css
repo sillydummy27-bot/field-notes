@@ -16,6 +16,8 @@
   --on-accent: #10223d;
   --accent-muted: #655419;
   --art-line: rgba(16, 34, 61, 0.22);
+  --success: #246444;
+  --error: #a53630;
   --serif: "Newsreader", Georgia, serif;
   --sans: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color-scheme: light;
@@ -39,6 +41,8 @@
   --on-accent: #10223d;
   --accent-muted: #5f4d12;
   --art-line: rgba(242, 237, 227, 0.28);
+  --success: #83d7aa;
+  --error: #ff9c94;
   color-scheme: dark;
 }
 
@@ -70,7 +74,8 @@ main {
 
 .hero,
 .blogs,
-.testimonial {
+.testimonial,
+.signup {
   width: min(1180px, calc(100% - 40px));
   margin-inline: auto;
 }
@@ -444,6 +449,105 @@ figcaption small {
   font-size: 0.88rem;
 }
 
+.signup {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+  align-items: end;
+  gap: clamp(2.5rem, 8vw, 8rem);
+  margin-bottom: clamp(4rem, 9vw, 8rem);
+  padding: clamp(2rem, 5vw, 4.5rem) 0;
+  border-top: 1px solid var(--line);
+}
+
+.signup h2 {
+  max-width: 560px;
+  font-size: clamp(2.8rem, 6vw, 5.4rem);
+}
+
+.signup__copy > p:last-child {
+  max-width: 540px;
+  margin: 1.5rem 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.signup__form label {
+  display: block;
+  margin-bottom: 0.65rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.signup__controls {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.signup__controls input {
+  min-width: 0;
+  flex: 1;
+  min-height: 54px;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.85rem;
+  color: var(--ink);
+  background: var(--surface);
+  font: inherit;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.signup__controls input::placeholder {
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+.signup__controls input:focus {
+  border-color: var(--accent-deep);
+  outline: 0;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 42%, transparent);
+}
+
+.signup__controls input[aria-invalid="true"] {
+  border-color: var(--error);
+}
+
+.signup__controls button {
+  min-height: 54px;
+  padding: 0.85rem 1.2rem;
+  border: 1px solid var(--inverse-surface);
+  border-radius: 0.85rem;
+  color: var(--inverse-text);
+  background: var(--inverse-surface);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.signup__controls button:hover {
+  transform: translateY(-2px);
+  background: var(--button-hover);
+}
+
+.signup__controls button:focus-visible {
+  outline: 3px solid var(--accent-deep);
+  outline-offset: 4px;
+}
+
+.signup__message {
+  min-height: 1.6em;
+  margin: 0.7rem 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.signup__message.is-success {
+  color: var(--success);
+}
+
+.signup__message.is-error {
+  color: var(--error);
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -468,7 +572,8 @@ figcaption small {
 
   .section-heading,
   .blog-grid,
-  .testimonial {
+  .testimonial,
+  .signup {
     grid-template-columns: 1fr;
   }
 
@@ -484,7 +589,8 @@ figcaption small {
 @media (max-width: 520px) {
   .hero,
   .blogs,
-  .testimonial {
+  .testimonial,
+  .signup {
     width: min(100% - 24px, 1180px);
   }
 
@@ -512,6 +618,10 @@ figcaption small {
 
   .testimonial {
     padding: 2.2rem 1.5rem;
+  }
+
+  .signup__controls {
+    flex-direction: column;
   }
 }
 
