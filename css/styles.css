@@ -155,6 +155,7 @@ h1 {
   font-size: clamp(1.05rem, 2vw, 1.25rem);
 }
 
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -163,17 +164,18 @@ h1 {
   padding: 0.8rem 1.3rem;
   border: 1px solid var(--ink);
   border-radius: 999px;
-  color: var(--inverse-text);
-  background: var(--inverse-surface);
+  color: var(--ink);
+  background: var(--surface);
   font-weight: 700;
   cursor: pointer;
-  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  transition: none;
 }
 
+/* remove hover effect */
 .button:hover {
-  transform: translateY(-2px);
-  background: var(--button-hover);
-  box-shadow: 0 10px 24px rgba(16, 34, 61, 0.2);
+  transform: none;
+  background: var(--inverse-surface);
+  box-shadow: none;
 }
 
 .button:focus-visible,
